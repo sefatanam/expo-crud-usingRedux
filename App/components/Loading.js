@@ -7,9 +7,10 @@ export default function Loading({ navigation }) {
   useEffect(() => checkLocalData(), []);
   function checkLocalData() {
     AsyncStorage.getItem("members", (err, data) => {
-      AsyncStorage.setItem("members", JSON.stringify(SampleData.members));
-      alert("Err")
-      console.log(data);
+      if (data != undefined) {
+        AsyncStorage.setItem("members", JSON.stringify(SampleData.members));
+      }
+      alert(err.message);
       navigation.navigate("Home");
       //   if (data === null) {
       //     AsyncStorage.setItem("members", JSON.stringify(SampleData.members)); //save the initial data in Async

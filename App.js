@@ -18,9 +18,6 @@ export default function App() {
           {/* <Stack.Screen name="Loading" component={Loading} /> */}
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <View style={styles.container}>
-        <HomeScreen />
-      </View> */}
     </Provider>
   );
 }

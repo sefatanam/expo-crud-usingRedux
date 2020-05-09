@@ -45,6 +45,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView>
       {members.map((obj) => (
+        //This could be moveable to a new component => Card.js
         <View style={styles.touchableOpacityContainer}>
           <TouchableOpacity key={obj.id} style={styles.touchableOpacityStyle}>
             <View>
@@ -87,5 +88,6 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     flexDirection: "column",
+
   },
 });
