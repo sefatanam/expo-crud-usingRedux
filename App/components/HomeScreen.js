@@ -8,10 +8,12 @@ import {
   SafeAreaView,
   Button,
 } from "react-native";
+import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getMember, deleteMember } from "../actions";
 
-const HomeScreen = () => {
+
+const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const dataReducer = useSelector((state) => state.dataReducer);
   const { members } = dataReducer;
@@ -25,6 +27,11 @@ const HomeScreen = () => {
         dispatch(getMember(JSON.parse(members)));
       }
     });
+  };
+
+  const onEdit = (obj) => {
+    console.log(obj);
+    navigation.navigate("Edit");
   };
 
   const onDelete = (id) => {
@@ -54,10 +61,7 @@ const HomeScreen = () => {
             </View>
             <View style={styles.buttonStyle}>
               <View>
-                <Button
-                  title="Edit"
-                  onPress={() => alert("this id is :" + obj.id)}
-                />
+                <Button title="Edit" onPress={() => onEdit(obj)} />
               </View>
               <View>
                 <Button title="Delete" onPress={() => onDelete(obj.id)} />
@@ -88,6 +92,5 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     flexDirection: "column",
-
   },
 });
